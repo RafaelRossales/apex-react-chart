@@ -1,88 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { ApexOptions } from 'apexcharts';
-import ReactApexChart from 'react-apexcharts'
-
+import React, { useEffect, useState } from 'react';
+import ReactApexCharts from 'react-apexcharts';
+import  ApexOptions from 'react-apexcharts';
+import ReactApexChartProps from 'react-apexcharts';
 
 interface ChartData {
-    x: number;
-    y: number;
-  }
-  
-  interface ChartOptions {
-    chart:any
-    xaxis: any
-    series: any,
-    fill:any
-  }
-  
+  x: number;
+  y: number;
+}
 
-export default function RealTimeChart(){
+interface ChartOptions {
+  chart: {
+    type: string;
+    animations: {
+      enabled: boolean;
+      easing: string;
+      dynamicAnimation: {
+        speed: number;
+      };
+    };
+  };
+  xaxis: {
+    type: 'datetime',
+  };
+  series: [
+    {
+      name: string;
+      data: ChartData[];
+    },
+  ];
+}
 
-    const [options, setOptions] = useState<ChartOptions>({
-        chart: {
-        type: 'line',
-          animations: {
-            enabled: true,
-            easing: 'linear',
-            dynamicAnimation: {
-              speed: 1000,
-            },
-          },
+const AnimatedChart: React.FC = () => {
+  const [config, setConfig] = useState<any>({
+    chart: {
+      type:"line",
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 1000,
         },
-        xaxis: {
-          type: 'datetime'
-        },
-        fill:{
-            opacity:0.3,
-            type:'gradient',
-            gradient:{
-                shade:'dark',
-                opacityFrom:0.7,
-                opacityTo:0.3
-            }
-        },
-        series: [{
-          name: 'series-1',
-          data: []
-        }]
-      });
-      
-      const [data, setData] = useState<ChartData[]>([]);
+      },
+    },
+    xaxis: {
+      type: 'datetime',
+    },
+    series: [
+      {
+        name: 'series-1',
+        data: [],
+      },
+    ],
+  });
 
-      useEffect(() => {
-        const interval = setInterval(() => {
-          setData(prevData => {
-            const newData = [...prevData];
-            newData.shift();
-            newData.push({
-              x: new Date().getTime(),
-              y: Math.floor(Math.random() * (100 - 0 + 1)) + 0
-            });
-            return newData;
-          });
-        }, 1000);
-      
-        return () => clearInterval(interval);
-      }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setConfig((prevConfig:any) => {
+        const newData: ChartData = {
+          x: new Date().getTime(),
+          y: Math.floor(Math.random() * 100),
+        };
 
-      useEffect(() => {
-        setOptions({
-          ...options,
+        return {
+          ...prevConfig,
           series: [
             {
-              ...options.series[0],
-              data,
+              ...prevConfig.series[0],
+              data: [...prevConfig.series[0].data, newData],
             },
           ],
-        });
-      }, [data]);
-      
+        };
+      });
+    }, 1000);
 
-      return <ReactApexChart 
-                options={options} 
-                series={[{ data }]} 
-                type="line" 
-                width={400}
-                height={350} />
-      
-}
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div id="chart">
+      <ReactApexCharts options={config} series={config.series} type="line" height={350} width={400}/>
+    </div>
+  );
+};
+
+export default AnimatedChart;
