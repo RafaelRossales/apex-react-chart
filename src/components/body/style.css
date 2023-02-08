@@ -1,0 +1,18 @@
+.container{
+    padding:0px;
+    width: 350px;
+    height: auto;
+    /* background-color: rgb(169, 240, 5); */
+    box-sizing: border-box;
+    display: block;
+    /* margin-right: 0px; */
+    /* display: inline-block; */
+    
+}
+
+.teclado{
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}

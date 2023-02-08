@@ -1,0 +1,14 @@
+.v-style{
+    background-color: rgb(156, 156, 156);
+    height: 60px;
+    /* width: 350px; */
+    width: auto;
+
+    display: flex;
+    justify-content: right;
+    align-items:center;
+
+    font-size: 45px;
+    color: rgb(180, 23, 23);
+    padding: 5px;
+}

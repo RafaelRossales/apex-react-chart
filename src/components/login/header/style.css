@@ -1,0 +1,13 @@
+.holder:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  height:48%;
+  width:100%;
+  background: #340de0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #021b8b, #0c038d);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #13025e, #07006d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius:0 0 50% 50%/0 0 100% 100%;
+  transform:scaleX(1.1);
+}

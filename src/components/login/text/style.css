@@ -1,0 +1,28 @@
+.text_body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+
+    position: relative;
+    z-index: 1000;
+    height: 40vh;
+    width: 100vw;
+    margin-left: 12em;
+    margin-top: 9em;                                                                                                                                                                                                                                                                                                                                                                                
+}
+
+
+.text_body > h1{
+    color:rgb(0, 0, 0);
+    font-size: 70px;
+}
+
+
+.sub_text_body{
+    padding: 5px;
+    font-size: 15px;
+    text-align: justify;
+    text-justify: inter-word;
+}

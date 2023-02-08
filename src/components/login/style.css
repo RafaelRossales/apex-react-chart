@@ -1,0 +1,26 @@
+.login_body{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 90px; */
+    /* margin-top:90% */
+
+    /* background-color: rgb(77, 211, 0); */
+    /* width: 100vw; */
+    /* height: 100vh; */
+}
+
+.elements{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* background-color: brown; */
+
+    gap: 50px;
+    /* align-self: center; */
+}
